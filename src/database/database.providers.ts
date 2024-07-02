@@ -8,7 +8,7 @@ export const databaseProviders = [
       configService: ConfigService,
     ): Promise<typeof mongoose> => {
       const uri = configService.get<string>('MONGODB_URI');
-      return mongoose.connect(uri);
+      return await mongoose.connect(uri);
     },
     inject: [ConfigService],
   },

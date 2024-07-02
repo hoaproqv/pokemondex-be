@@ -5,7 +5,7 @@ export const pokemonsProviders = [
   {
     provide: 'POKEMON_MODEL',
     useFactory: (connection: Connection) =>
-      connection.model('Pokemon', PokemonSchema),
+      connection.model('Pokemons', PokemonSchema),
     inject: ['DATABASE_CONNECTION'],
   },
 ];

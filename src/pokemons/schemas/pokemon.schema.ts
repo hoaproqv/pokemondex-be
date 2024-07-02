@@ -1,7 +1,16 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import mongoose from 'mongoose';
+
+export class IUserSchema {
+  _id: mongoose.Schema.Types.ObjectId;
+  email: string;
+}
 
 @Schema()
 export class Pokemon {
+  @Prop({ required: true })
+  _id: string;
+
   @Prop({ required: true })
   id: number;
 
@@ -55,6 +64,18 @@ export class Pokemon {
 
   @Prop({ required: true })
   url_image: string;
+
+  @Prop({ type: Object })
+  createdBy: IUserSchema;
+
+  @Prop({ type: Object })
+  updatedBy: IUserSchema;
+
+  @Prop()
+  createdAt: Date;
+
+  @Prop()
+  updatedAt: Date;
 }
 
 export const PokemonSchema = SchemaFactory.createForClass(Pokemon);

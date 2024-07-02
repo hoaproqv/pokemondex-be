@@ -1,13 +1,12 @@
 import { Module } from '@nestjs/common';
 import { PokemonsService } from './pokemons.service';
 import { PokemonsController } from './pokemons.controller';
-import { MongooseModule } from '@nestjs/mongoose';
-import { Pokemon, PokemonSchema } from './schemas/pokemon.schema';
 import { DatabaseModule } from '../database/database.module';
+import { pokemonsProviders } from './pokemon.providers';
 
 @Module({
   imports: [DatabaseModule],
   controllers: [PokemonsController],
-  providers: [PokemonsService],
+  providers: [PokemonsService, ...pokemonsProviders],
 })
 export class PokemonsModule {}
